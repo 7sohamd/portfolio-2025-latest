@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
         }
 
         const genAI = new GoogleGenerativeAI(apiKey);
-        const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-exp' });
+        const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
         // Create context from profile data
         const context = `
@@ -43,13 +43,25 @@ Be professional, concise, and helpful. If asked about something not in the portf
 
         const prompt = `${context}\n\nUser: ${message}\nAssistant:`;
 
+        console.log('Sending request to Gemini 2.5 Flash...');
         const result = await model.generateContent(prompt);
         const response = await result.response;
         const reply = response.text();
 
+        console.log('Gemini response received, length:', reply?.length || 0);
+
+        // Validate response
+        if (!reply || reply.trim().length === 0) {
+            console.error('Empty response from Gemini');
+            return NextResponse.json({
+                reply: 'I apologize, but I received an empty response. Please try again.'
+            });
+        }
+
         return NextResponse.json({ reply });
     } catch (err: any) {
         console.error('AI Error:', err);
+        console.error('Error details:', err.message, err.stack);
         return NextResponse.json(
             { message: 'Error processing AI request', error: err.message },
             { status: 500 }

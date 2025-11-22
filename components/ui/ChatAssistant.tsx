@@ -59,8 +59,25 @@ export default function ChatAssistant() {
                 body: JSON.stringify({ message: userMessage }),
             });
             const data = await res.json();
-            setMessages((prev) => [...prev, { role: 'assistant', content: data.reply }]);
+
+            // Check if response has an error
+            if (data.error || data.message) {
+                console.error('API Error:', data);
+                setMessages((prev) => [...prev, {
+                    role: 'assistant',
+                    content: `Error: ${data.message || data.error || 'Unknown error occurred'}`
+                }]);
+            } else if (!data.reply || data.reply.trim().length === 0) {
+                console.error('Empty reply from API');
+                setMessages((prev) => [...prev, {
+                    role: 'assistant',
+                    content: 'I received an empty response. Please try again.'
+                }]);
+            } else {
+                setMessages((prev) => [...prev, { role: 'assistant', content: data.reply }]);
+            }
         } catch (error) {
+            console.error('Fetch error:', error);
             setMessages((prev) => [...prev, { role: 'assistant', content: 'Apologies, I encountered an error.' }]);
         } finally {
             setLoading(false);

@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, X, Send } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
 
 export default function ChatAssistant() {
     const [isOpen, setIsOpen] = useState(false);
@@ -116,12 +117,28 @@ export default function ChatAssistant() {
                                     className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                                 >
                                     <div
-                                        className={`max-w-[80%] p-3 text-sm font-mono ${msg.role === 'user'
-                                            ? 'bg-jap-black dark:bg-jap-white text-jap-white dark:text-jap-black border border-jap-black dark:border-jap-white'
-                                            : 'bg-white dark:bg-neutral-800 text-jap-black dark:text-jap-white border border-neutral-300 dark:border-neutral-700 shadow-sm'
+                                        className={`max-w-[80%] p-3 text-sm ${msg.role === 'user'
+                                            ? 'bg-jap-black dark:bg-jap-white text-jap-white dark:text-jap-black border border-jap-black dark:border-jap-white font-mono'
+                                            : 'bg-white dark:bg-neutral-800 text-jap-black dark:text-jap-white border border-neutral-300 dark:border-neutral-700 shadow-sm prose prose-sm dark:prose-invert max-w-none'
                                             }`}
                                     >
-                                        {msg.content}
+                                        {msg.role === 'user' ? (
+                                            msg.content
+                                        ) : (
+                                            <ReactMarkdown
+                                                components={{
+                                                    p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
+                                                    strong: ({ children }) => <strong className="font-bold text-jap-red dark:text-jap-red">{children}</strong>,
+                                                    em: ({ children }) => <em className="italic">{children}</em>,
+                                                    ul: ({ children }) => <ul className="list-disc list-inside mb-2 space-y-1">{children}</ul>,
+                                                    ol: ({ children }) => <ol className="list-decimal list-inside mb-2 space-y-1">{children}</ol>,
+                                                    li: ({ children }) => <li className="ml-2">{children}</li>,
+                                                    code: ({ children }) => <code className="bg-neutral-200 dark:bg-neutral-700 px-1 py-0.5 rounded text-xs font-mono">{children}</code>,
+                                                }}
+                                            >
+                                                {msg.content}
+                                            </ReactMarkdown>
+                                        )}
                                     </div>
                                 </div>
                             ))}

@@ -72,7 +72,7 @@ export const EXPERIENCE: Experience[] = [
     role: "Frontend Intern",
     company: "Infinity Bit",
     location: "Remote",
-    period: "2025 – Present",
+    period: "2025",
     details: [
       "Developed interactive dashboards using React.js and Tailwind, improving UI consistency and reducing page load time by 25%.",
       "Implemented responsive layouts and reusable components, enhancing scalability of the frontend codebase.",

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { PROFILE } from '@/constants';
+import { PROFILE, SKILLS, PROJECTS, EXPERIENCE, EDUCATION, AWARDS, CERTIFICATIONS, LANGUAGES } from '@/constants';
 
 export async function POST(request: NextRequest) {
     try {
@@ -15,6 +15,9 @@ export async function POST(request: NextRequest) {
 
         // Initialize Gemini
         const apiKey = process.env.GEMINI_API_KEY;
+        console.log('API Key present:', !!apiKey);
+        console.log('API Key length:', apiKey?.length || 0);
+
         if (!apiKey) {
             console.error('Gemini API Key is missing');
             return NextResponse.json(
@@ -26,19 +29,55 @@ export async function POST(request: NextRequest) {
         const genAI = new GoogleGenerativeAI(apiKey);
         const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
-        // Create context from profile data
+        // Create comprehensive context from all profile data
+        const skillsText = SKILLS.map(cat => `${cat.category}: ${cat.skills.join(', ')}`).join('\n');
+        const projectsText = PROJECTS.map(p => `- ${p.title}: ${p.description} (Tech: ${p.tech.join(', ')})`).join('\n');
+        const experienceText = EXPERIENCE.map(exp =>
+            `- ${exp.role} at ${exp.company} (${exp.period}, ${exp.location})\n  ${exp.details.join('\n  ')}`
+        ).join('\n\n');
+        const educationText = EDUCATION.map(edu => `- ${edu.institution}: ${edu.degree} (${edu.period}) ${edu.details || ''}`).join('\n');
+        const certsText = CERTIFICATIONS.map(cert => `- ${cert.name} (${cert.issuer})`).join('\n');
+
         const context = `
 You are an AI assistant for ${PROFILE.name}'s portfolio website.
 
-Here is information about ${PROFILE.name}:
-- Name: ${PROFILE.name}
-- Role: ${PROFILE.role}
-- Email: ${PROFILE.email}
-- Location: ${PROFILE.location}
-- Summary: ${PROFILE.summary}
+COMPLETE PROFILE INFORMATION:
 
-Answer questions about ${PROFILE.name}'s background, skills, experience, and projects based on this portfolio.
-Be professional, concise, and helpful. If asked about something not in the portfolio, politely indicate that information is not available.
+Name: ${PROFILE.name}
+Role: ${PROFILE.role}
+Location: ${PROFILE.location}
+Email: ${PROFILE.email}
+Phone: ${PROFILE.phone}
+LinkedIn: ${PROFILE.linkedin}
+GitHub: ${PROFILE.github}
+
+PROFESSIONAL SUMMARY:
+${PROFILE.summary}
+
+TECHNICAL SKILLS:
+${skillsText}
+
+PROJECTS:
+${projectsText}
+
+PROFESSIONAL EXPERIENCE:
+${experienceText}
+
+EDUCATION:
+${educationText}
+
+CERTIFICATIONS:
+${certsText}
+
+HACKATHON AWARDS:
+${AWARDS.join('\n')}
+
+LANGUAGES:
+${LANGUAGES.join(', ')}
+
+Answer questions about ${PROFILE.name}'s background, skills, experience, projects, education, and achievements based on this comprehensive information.
+Be professional, concise, and helpful. Provide specific details from the resume when relevant.
+If asked about something not in the portfolio, politely indicate that information is not available.
 `;
 
         const prompt = `${context}\n\nUser: ${message}\nAssistant:`;

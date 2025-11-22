@@ -105,7 +105,7 @@ export default function Home() {
               <a href={`mailto:${PROFILE.email}`} className="block text-lg border-b border-neutral-300 hover:border-jap-black dark:border-neutral-700 dark:hover:border-white transition-colors pb-1 mb-6 w-fit">
                 {PROFILE.email}
               </a>
-              <a href="/Resume_TCS_Latest.pdf" download className="flex items-center gap-2 px-6 py-3 bg-jap-black dark:bg-neutral-200 text-white dark:text-jap-black font-bold uppercase tracking-wider hover:bg-neutral-700 dark:hover:bg-white hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 text-sm">
+              <a href="/Resume_TCS_Latest.pdf" download className="flex items-center gap-2 px-6 py-3 bg-jap-black dark:bg-neutral-200 text-white dark:text-jap-black font-bold uppercase tracking-wider hover:bg-neutral-700 dark:hover:bg-white hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 text-sm w-fit">
                 <Download size={16} /> Resume
               </a>
             </div>

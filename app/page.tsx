@@ -8,6 +8,7 @@ import { VerticalLine } from '../components/VerticalLine';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { Typewriter } from '../components/Typewriter';
 import ChatAssistant from '../components/ui/ChatAssistant';
+import { script } from 'framer-motion/client';
 
 export default function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -261,6 +262,29 @@ export default function Home() {
                     {lang}
                   </span>
                 ))}
+              </div>
+              <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.0/build/spline-viewer.js"></script>
+              {/* Crop the iframe vertically by placing it in an overflow-hidden container.
+                  Two iframes are rendered: the first (light-mode spline) is hidden in dark mode,
+                  the second (animated sun) is shown only in dark mode. Both share the same
+                  positioning so the top/bottom crop remains identical. */}
+              <div className="relative w-full h-64 md:h-96 overflow-hidden rounded">
+                {/* Light mode spline (visible when not dark) */}
+                <iframe
+                  src="https://my.spline.design/star-SC1iK5osclgqkd2RAXXO9B4k/"
+                  className="absolute left-0 w-full min-h-[140%] top-1/2 -translate-y-1/2 dark:hidden"
+                  style={{ border: 0 }}
+                  title="3D Star (light)"
+                />
+
+                {/* Dark mode animated sun (visible only in dark) */}
+                <iframe
+                  src="https://my.spline.design/moonrotationwobble-7Dnu6sa2Qs9YFs56Ix2hsNiG/"
+                  className="absolute left-0 w-full min-h-[140%] top-1/2 -translate-y-1/2 hidden dark:block"
+                  style={{ border: 0 }}
+                  title="Animated Sun (dark)"
+                  frameBorder={0}
+                />
               </div>
             </section>
           </div>

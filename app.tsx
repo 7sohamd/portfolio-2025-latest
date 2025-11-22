@@ -102,9 +102,9 @@ function App() {
                             <a href={`mailto:${PROFILE.email}`} className="block text-lg border-b border-neutral-300 hover:border-jap-black dark:border-neutral-700 dark:hover:border-white transition-colors pb-1 mb-6 w-fit">
                                 {PROFILE.email}
                             </a>
-                            <button className="flex items-center gap-2 px-6 py-3 bg-jap-black dark:bg-neutral-200 text-white dark:text-jap-black font-bold uppercase tracking-wider hover:bg-neutral-700 dark:hover:bg-white hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 text-sm">
+                            <a href="/Resume_TCS_Latest.pdf" download className="flex items-center gap-2 px-6 py-3 bg-jap-black dark:bg-neutral-200 text-white dark:text-jap-black font-bold uppercase tracking-wider hover:bg-neutral-700 dark:hover:bg-white hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 text-sm">
                                 <Download size={16} /> Resume
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </aside>
@@ -271,9 +271,9 @@ function App() {
                                     {PROFILE.email}
                                 </a>
                             </div>
-                            <button className="flex items-center gap-2 px-6 py-3 bg-jap-white dark:bg-neutral-800 text-jap-black dark:text-white font-bold uppercase tracking-wider hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-colors w-fit">
+                            <a href="/Resume_TCS_Latest.pdf" download className="flex items-center gap-2 px-6 py-3 bg-jap-white dark:bg-neutral-800 text-jap-black dark:text-white font-bold uppercase tracking-wider hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-colors w-fit">
                                 <Download size={18} /> Resume
-                            </button>
+                            </a>
                         </div>
                     </section>
 

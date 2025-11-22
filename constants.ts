@@ -31,6 +31,39 @@ export const SKILLS: SkillCategory[] = [
   {
     category: "AI/ML",
     skills: ["Gemini API", "TensorFlow (Basics)", "NLP"]
+  },
+  {
+    category: "DevOps & Tools",
+    skills: ["Docker", "AWS", "Git", "CI/CD", "Firebase", "Figma", "Adobe XD"]
+  }
+];
+
+export const PROJECTS: Project[] = [
+  {
+    title: "LoreChain",
+    description: "AI-assisted collaborative storytelling platform with blockchain-authenticated authorship.",
+    tech: ["Blockchain", "AI", "Web3"],
+    liveLink: "https://lore-chain.vercel.app/",
+    codeLink: "https://github.com/7sohamd/LoreChain"
+  },
+  {
+    title: "Vaayu",
+    description: "Decentralized AI-powered app for monitoring real-time air quality with personalized health alerts.",
+    tech: ["DeFi", "AI", "IoT"],
+    liveLink: "https://vaayu-web-umber.vercel.app/login",
+    codeLink: "https://github.com/7sohamd/Vaayu-Web"
+  },
+  {
+    title: "Pac-Rupt",
+    description: "Multiplayer arcade game integrated with blockchain, where viewers sabotage gameplay in real-time.",
+    tech: ["GameDev", "Blockchain"],
+    liveLink: "https://maze-plum.vercel.app/",
+    codeLink: "https://github.com/7sohamd/maze"
+  },
+  {
+    title: "Mini Projects",
+    description: "NoKeyboardGaming (gesture/facial recognition), Emotion Recognise (ML detection), TabTracker (AI Chrome extension).",
+    tech: ["Python", "ML", "OpenCV"],
   }
 ];
 

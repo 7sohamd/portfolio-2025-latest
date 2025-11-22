@@ -39,7 +39,7 @@ export default function Home() {
             lg:h-screen lg:sticky lg:top-0 bg-jap-white dark:bg-jap-black z-40
           `}
         >
-          <div className="p-6 md:p-12 flex flex-col h-full min-w-[320px] relative">
+          <div className="p-6 md:p-12 flex flex-col h-full min-w-[320px] relative overflow-y-auto no-scrollbar">
 
             {/* Top Section: Profile */}
             <div className="relative">
@@ -98,6 +98,19 @@ export default function Home() {
                   <Typewriter text={PROFILE.summary} delay={800} speed={10} />
                 </div>
               </div>
+
+              {/* YouTube Video Section (Desktop Only) */}
+              <div className="mt-8 hidden lg:block">
+                <div className="relative w-full aspect-[9/16] max-h-[500px] rounded overflow-hidden border border-neutral-900 dark:border-neutral-700">
+                  <iframe
+                    src="https://www.youtube.com/embed/r0RZqy_8pdI?autoplay=1&mute=1&loop=1&playlist=r0RZqy_8pdI&controls=1&modestbranding=1&rel=0"
+                    className="absolute top-0 left-0 w-full h-full"
+                    allow="autoplay; encrypted-media"
+                    allowFullScreen
+                    title="YouTube Video"
+                  />
+                </div>
+              </div>
             </div>
 
             {/* Bottom Section: CTA (Desktop Only) */}
@@ -117,7 +130,7 @@ export default function Home() {
         {isSidebarOpen && <VerticalLine />}
 
         {/* Right Panel (Scrollable) */}
-        <main className={`flex flex-col transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${isSidebarOpen ? 'lg:w-[65%]' : 'w-full'}`}>
+        <main className={`flex flex-col transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] no-scrollbar ${isSidebarOpen ? 'lg:w-[65%]' : 'w-full'}`}>
 
           {/* Mobile Summary (Hidden on Desktop) */}
           <div className="lg:hidden p-6 md:p-12 border-b border-neutral-900 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-900 transition-colors duration-300">

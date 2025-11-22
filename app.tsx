@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Github, Linkedin, ExternalLink, Code2, Download, ArrowRight } from 'lucide-react';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { PROFILE, SKILLS, PROJECTS, EXPERIENCE, EDUCATION, AWARDS, CERTIFICATIONS, LANGUAGES } from './constants';
 import { SectionHeader } from './components/SectionHeader';
 import { VerticalLine } from './components/VerticalLine';
@@ -239,7 +240,6 @@ function App() {
                                 ))}
                             </ul>
                         </section>
-
                         {/* Awards & Languages */}
                         <section className="p-6 md:p-12 border-b border-neutral-900 dark:border-neutral-700 md:border-b-0 transition-colors duration-300">
                             <h3 className="font-serif text-2xl mb-8 uppercase tracking-widest border-b border-neutral-900 dark:border-neutral-700 pb-2">Hackathon & Awards</h3>
@@ -254,28 +254,18 @@ function App() {
                             <h3 className="font-serif text-2xl mt-12 mb-8 uppercase tracking-widest border-b border-neutral-900 dark:border-neutral-700 pb-2">Languages</h3>
                             <div className="flex flex-wrap gap-3">
                                 {LANGUAGES.map((lang, idx) => (
-                                    <span key={idx} className="px-4 py-2 border border-neutral-900 dark:border-neutral-600 rounded-full text-sm font-medium hover:bg-neutral-900 hover:text-white dark:hover:bg-neutral-200 dark:hover:text-jap-black hover:scale-105 transition-all duration-300 cursor-default shadow-sm">
+                                    <span key={idx} className="px-3 py-2 bg-neutral-100 dark:bg-neutral-800 text-sm font-mono text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700 rounded-sm hover:border-jap-red dark:hover:border-jap-red transition-colors cursor-default">
                                         {lang}
                                     </span>
                                 ))}
                             </div>
+                            <DotLottieReact
+                                src="https://lottie.host/39767148-2db8-4f7c-a774-6a89fde0624b/FUA3rroPAZ.lottie"
+                                loop
+                                autoplay
+                            />
                         </section>
                     </div>
-
-                    {/* Mobile Footer CTA (Visible only on Mobile) */}
-                    <section className="lg:hidden p-6 md:p-12 bg-jap-black dark:bg-neutral-900 text-jap-white dark:text-neutral-400 transition-colors duration-300">
-                        <div className="flex flex-col gap-6">
-                            <div>
-                                <h2 className="text-4xl font-serif mb-4 text-jap-white dark:text-white">Let's Build.</h2>
-                                <a href={`mailto:${PROFILE.email}`} className="text-xl border-b border-jap-white/30 hover:border-jap-white dark:border-neutral-600 dark:hover:border-white transition-colors pb-1">
-                                    {PROFILE.email}
-                                </a>
-                            </div>
-                            <a href="/Resume_TCS_Latest.pdf" download className="flex items-center gap-2 px-6 py-3 bg-jap-white dark:bg-neutral-800 text-jap-black dark:text-white font-bold uppercase tracking-wider hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-colors w-fit">
-                                <Download size={18} /> Resume
-                            </a>
-                        </div>
-                    </section>
 
                     {/* Copyright Footer */}
                     <footer className="p-6 md:p-12 bg-neutral-100 dark:bg-neutral-950 text-right transition-colors duration-300 border-t border-neutral-900 dark:border-neutral-700">

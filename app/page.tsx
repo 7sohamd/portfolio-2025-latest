@@ -101,9 +101,9 @@ export default function Home() {
 
               {/* YouTube Video Section (Desktop Only) */}
               <div className="mt-8 hidden lg:block">
-                <div className="relative w-full aspect-[9/16] max-h-[500px] rounded overflow-hidden border border-neutral-900 dark:border-neutral-700">
+                <div className="relative w-full aspect-video rounded overflow-hidden border border-neutral-900 dark:border-neutral-700">
                   <iframe
-                    src="https://www.youtube.com/embed/r0RZqy_8pdI?autoplay=1&mute=1&loop=1&playlist=r0RZqy_8pdI&controls=1&modestbranding=1&rel=0"
+                    src="https://www.youtube.com/embed/FvWLnpbeF-0?autoplay=1&mute=1&loop=1&playlist=FvWLnpbeF-0&controls=1&modestbranding=1&rel=0"
                     className="absolute top-0 left-0 w-full h-full"
                     allow="autoplay; encrypted-media"
                     allowFullScreen

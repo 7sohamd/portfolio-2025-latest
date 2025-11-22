@@ -64,6 +64,7 @@ export const PROJECTS: Project[] = [
     title: "Mini Projects",
     description: "NoKeyboardGaming (gesture/facial recognition), Emotion Recognise (ML detection), TabTracker (AI Chrome extension).",
     tech: ["Python", "ML", "OpenCV"],
+    liveLink: "https://github.com/7sohamd"
   }
 ];
 

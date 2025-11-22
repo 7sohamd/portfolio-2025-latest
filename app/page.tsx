@@ -169,7 +169,10 @@ export default function Home() {
             <SectionHeader title="Projects" number="(02)" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {PROJECTS.map((project, index) => (
-                <div key={index} className="group relative flex flex-col justify-between border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/50 hover:border-neutral-900 dark:hover:border-neutral-200 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl overflow-hidden">
+                <div
+                  key={index}
+                  className="group relative flex flex-col justify-between border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/50 hover:border-neutral-900 dark:hover:border-neutral-200 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl overflow-hidden"
+                >
 
                   {/* Decorative Red Line Reveal */}
                   <div className="absolute top-0 left-0 w-1 h-0 bg-jap-red group-hover:h-full transition-all duration-500 ease-in-out" />
@@ -177,7 +180,17 @@ export default function Home() {
                   <div className="p-6 z-10">
                     <div className="flex justify-between items-start mb-4">
                       <h3 className="text-2xl font-serif group-hover:text-jap-red transition-colors">{project.title}</h3>
-                      <ArrowRight className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 text-jap-red" size={20} />
+                      {project.liveLink && (
+                        <a
+                          href={project.liveLink}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 text-jap-red hover:scale-110"
+                          aria-label={`Visit ${project.title}`}
+                        >
+                          <ArrowRight size={20} />
+                        </a>
+                      )}
                     </div>
                     <p className="text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed text-sm">
                       {project.description}
@@ -192,12 +205,22 @@ export default function Home() {
                   </div>
                   <div className="flex gap-4 p-6 pt-4 border-t border-dashed border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-black/20">
                     {project.liveLink && (
-                      <a href={project.liveLink} className="flex items-center gap-1 text-sm font-bold hover:text-jap-red dark:hover:text-jap-red transition-colors group/link">
+                      <a
+                        href={project.liveLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex items-center gap-1 text-sm font-bold hover:text-jap-red dark:hover:text-jap-red transition-colors group/link"
+                      >
                         <ExternalLink size={14} className="group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform" /> LIVE
                       </a>
                     )}
                     {project.codeLink && (
-                      <a href={project.codeLink} className="flex items-center gap-1 text-sm font-bold hover:text-jap-red dark:hover:text-jap-red transition-colors group/link">
+                      <a
+                        href={project.codeLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex items-center gap-1 text-sm font-bold hover:text-jap-red dark:hover:text-jap-red transition-colors group/link"
+                      >
                         <Code2 size={14} className="group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform" /> CODE
                       </a>
                     )}

@@ -100,28 +100,17 @@ export default function Home() {
               </div>
 
               {/* YouTube Video Section (Desktop Only) */}
-              <div className="mt-8 hidden lg:block">
-                <div className="relative w-full aspect-video rounded overflow-hidden border border-neutral-900 dark:border-neutral-700">
-                  <iframe
-                    src="https://www.youtube.com/embed/FvWLnpbeF-0?autoplay=1&mute=1&loop=1&playlist=FvWLnpbeF-0&controls=1&modestbranding=1&rel=0"
-                    className="absolute top-0 left-0 w-full h-full"
-                    allow="autoplay; encrypted-media"
-                    allowFullScreen
-                    title="YouTube Video"
-                  />
-                </div>
-              </div>
-            </div>
 
-            {/* Bottom Section: CTA (Desktop Only) */}
-            <div className="mt-auto pt-12 hidden lg:block animate-on-load delay-500">
-              <h2 className="text-4xl font-serif mb-2 text-jap-black dark:text-white">Let's Build.</h2>
-              <a href={`mailto:${PROFILE.email}`} className="block text-lg border-b border-neutral-300 hover:border-jap-black dark:border-neutral-700 dark:hover:border-white transition-colors pb-1 mb-6 w-fit">
-                {PROFILE.email}
-              </a>
-              <a href="/Resume_TCS_Latest.pdf" download className="flex items-center gap-2 px-6 py-3 bg-jap-black dark:bg-neutral-200 text-white dark:text-jap-black font-bold uppercase tracking-wider hover:bg-neutral-700 dark:hover:bg-white hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 text-sm w-fit">
-                <Download size={16} /> Resume
-              </a>
+              {/* Bottom Section: CTA (Desktop Only) */}
+              <div className="mt-auto pt-12 hidden lg:block animate-on-load delay-500">
+                <h2 className="text-4xl font-serif mb-2 text-jap-black dark:text-white">Let's Build.</h2>
+                <a href={`mailto:${PROFILE.email}`} className="block text-lg border-b border-neutral-300 hover:border-jap-black dark:border-neutral-700 dark:hover:border-white transition-colors pb-1 mb-6 w-fit">
+                  {PROFILE.email}
+                </a>
+                <a href="/Resume_TCS_Latest.pdf" download className="flex items-center gap-2 px-6 py-3 bg-jap-black dark:bg-neutral-200 text-white dark:text-jap-black font-bold uppercase tracking-wider hover:bg-neutral-700 dark:hover:bg-white hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 text-sm w-fit">
+                  <Download size={16} /> Resume
+                </a>
+              </div>
             </div>
           </div>
         </aside>
